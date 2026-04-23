@@ -1,48 +1,123 @@
+<h1>TEST UPDATE</h1>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Tes RIASEC</title>
+    <title>Tes Minat Bakat RIASEC</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: #f5f7fa;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .question {
+            background: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        label {
+            display: block;
+            margin-left: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
 </head>
 <body>
 
-<h2>Tes Minat Bakat</h2>
+<h2>Tes Minat & Bakat (RIASEC)</h2>
 
 <form action="/submit" method="POST">
 
-<p>1. Saya suka bekerja dengan alat</p>
-<input type="number" name="q1" min="1" max="5" required>
+<!-- TEMPLATE JAWABAN -->
+<script>
+function opsi(nama) {
+    return `
+    <label><input type="radio" name="${nama}" value="5" required> Sangat Sesuai</label>
+    <label><input type="radio" name="${nama}" value="4"> Sesuai</label>
+    <label><input type="radio" name="${nama}" value="3"> Cukup</label>
+    <label><input type="radio" name="${nama}" value="2"> Kurang Sesuai</label>
+    <label><input type="radio" name="${nama}" value="1"> Tidak Sesuai</label>
+    `;
+}
+</script>
 
-<p>2. Saya suka menganalisis masalah</p>
-<input type="number" name="q2" min="1" max="5" required>
+<div id="soal"></div>
 
-<p>3. Saya suka kegiatan seni</p>
-<input type="number" name="q3" min="1" max="5" required>
-
-<p>4. Saya suka membantu orang lain</p>
-<input type="number" name="q4" min="1" max="5" required>
-
-<p>5. Saya suka bisnis atau memimpin</p>
-<input type="number" name="q5" min="1" max="5" required>
-
-<p>6. Saya suka pekerjaan administrasi</p>
-<input type="number" name="q6" min="1" max="5" required>
-
-<p>7. Saya suka pekerjaan lapangan</p>
-<input type="number" name="q7" min="1" max="5" required>
-
-<p>8. Saya suka penelitian</p>
-<input type="number" name="q8" min="1" max="5" required>
-
-<p>9. Saya suka jualan</p>
-<input type="number" name="q9" min="1" max="5" required>
-
-<p>10. Saya suka kegiatan sosial</p>
-<input type="number" name="q10" min="1" max="5" required>
-
-<br><br>
-<button type="submit">Kirim</button>
+<br>
+<button type="submit">Kirim Jawaban</button>
 
 </form>
+
+<script>
+const daftarSoal = [
+"Saya merasa lebih nyaman ketika mengerjakan sesuatu yang memiliki hasil nyata.",
+"Saya tertarik memahami bagaimana suatu sistem bekerja secara logis.",
+"Saya menikmati kegiatan yang melibatkan ekspresi ide secara bebas.",
+"Saya merasa puas ketika bisa membantu orang lain menyelesaikan masalah.",
+"Saya tertarik pada aktivitas yang melibatkan pengambilan keputusan.",
+"Saya lebih suka pekerjaan yang memiliki aturan yang jelas dan terstruktur.",
+
+"Saya tertarik pada aktivitas luar ruangan dibanding di dalam ruangan.",
+"Saya menikmati mencari jawaban dari pertanyaan yang kompleks.",
+"Saya senang mencoba cara baru dalam menyelesaikan suatu tugas.",
+"Saya merasa nyaman bekerja dalam tim untuk mencapai tujuan bersama.",
+"Saya tertarik mempengaruhi atau meyakinkan orang lain.",
+"Saya merasa cocok dengan pekerjaan yang membutuhkan ketelitian tinggi.",
+
+"Saya lebih suka praktik langsung dibanding hanya teori.",
+"Saya menikmati proses analisis sebelum mengambil keputusan.",
+"Saya tertarik pada kegiatan yang melibatkan kreativitas visual atau ide.",
+"Saya merasa puas ketika bisa berinteraksi dan membantu banyak orang.",
+"Saya tertarik mengelola atau mengatur suatu kegiatan.",
+"Saya lebih nyaman mengikuti prosedur dibanding improvisasi.",
+
+"Saya menikmati bekerja dengan alat atau benda fisik.",
+"Saya tertarik pada eksperimen atau penelitian.",
+"Saya senang mengekspresikan diri melalui karya.",
+"Saya merasa penting untuk memahami perasaan orang lain.",
+"Saya tertarik pada dunia bisnis atau usaha.",
+"Saya menyukai pekerjaan administratif atau pencatatan.",
+
+"Saya menikmati aktivitas yang membutuhkan kekuatan fisik atau koordinasi.",
+"Saya suka memecahkan masalah yang membutuhkan pemikiran mendalam.",
+"Saya senang menciptakan sesuatu yang berbeda dari biasanya.",
+"Saya merasa nyaman berkomunikasi dengan banyak orang.",
+"Saya tertarik mencapai target atau hasil tertentu.",
+"Saya merasa cocok dengan pekerjaan yang rapi dan terorganisir."
+];
+
+const container = document.getElementById("soal");
+
+daftarSoal.forEach((soal, index) => {
+    const nomor = index + 1;
+    container.innerHTML += `
+        <div class="question">
+            <p><strong>${nomor}. ${soal}</strong></p>
+            ${opsi("q" + nomor)}
+        </div>
+    `;
+});
+</script>
 
 </body>
 </html>
