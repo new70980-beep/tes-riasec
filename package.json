@@ -1,0 +1,17 @@
+{
+  "name": "tes-riasec",
+  "version": "1.0.0",
+  "description": "Aplikasi tes minat bakat RIASEC untuk klasifikasi siswa (Sains / Bisnis)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["riasec", "tes minat bakat", "pendidikan"],
+  "author": "Nama Anda",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "body-parser": "^1.20.2"
+  }
+}
