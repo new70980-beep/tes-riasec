@@ -9,15 +9,17 @@
         body {
             font-family: Arial, sans-serif;
             margin: 40px;
-            background: #f5f7fa;
+            background: linear-gradient(135deg, #74ebd5, #9face6);
         }
 
         h1 {
             text-align: center;
+            color: #333;
         }
 
         h2 {
             text-align: center;
+            color: #444;
         }
 
         .question {
@@ -26,25 +28,56 @@
             margin-bottom: 15px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            border-left: 5px solid #007BFF;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .question:hover {
+            transform: scale(1.01);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
         label {
             display: block;
             margin-left: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            transition: 0.2s;
+        }
+
+        label:hover {
+            background: #f0f8ff;
         }
 
         button {
+            width: 100%;
+            margin-top: 20px;
             padding: 10px 20px;
             font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 1px;
             background: #007BFF;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
         }
 
         button:hover {
             background: #0056b3;
+            transform: scale(1.02);
+        }
+
+        form {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -56,7 +89,14 @@
 
 <form action="/submit" method="POST">
 
-<!-- TEMPLATE JAWABAN -->
+<div id="soal"></div>
+
+<br>
+<button type="submit">Kirim Jawaban</button>
+
+</form>
+
+<!-- TEMPLATE OPSI -->
 <script>
 function opsi(nama) {
     return `
@@ -69,13 +109,7 @@ function opsi(nama) {
 }
 </script>
 
-<div id="soal"></div>
-
-<br>
-<button type="submit">Kirim Jawaban</button>
-
-</form>
-
+<!-- GENERATE SOAL -->
 <script>
 const daftarSoal = [
 "Saya merasa lebih nyaman ketika mengerjakan sesuatu yang memiliki hasil nyata.",
